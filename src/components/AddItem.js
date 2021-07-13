@@ -17,6 +17,7 @@ const AddItem = ({ onAdd }) => {
           setFormVisibility(!formVisibility);
         }}
       >
+        {/* // GRID THE FORM OR SM */}
         {formVisibility ? "Add" : "Close"}
       </button>
       <form
@@ -28,7 +29,7 @@ const AddItem = ({ onAdd }) => {
             alert("Please enter an item...");
             return;
           } else if (!Number.isInteger(quantity)) {
-            alert("Please enter a quantity great than 0...");
+            alert("Please enter a quantity greater than 0...");
             setQuantity(1);
             return;
           }
