@@ -4,7 +4,7 @@ const Footer = () => {
       {/* <a href="/about"> */}
       <button className="btn btnAbout">About</button>
       {/* </a> */}
-      <p>Copyright &copy; 2021</p>
+      <p>&copy; 2021 Austin Oligario.</p>
     </footer>
   );
 };
