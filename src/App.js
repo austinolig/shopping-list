@@ -6,17 +6,13 @@ import { useEffect, useState } from "react";
 
 const App = () => {
   const [items, setItems] = useState([]);
-  const [items2, setItems2] = useState([]);
 
   // GET ITEMS
   const getItems = async () => {
     const res = await axios.get("http://localhost:5000/items");
-    const res2 = await axios.get("https://jsonplaceholder.typicode.com/users");
     const itemsFromServer = res.data;
-    console.log(res2.data);
     console.log(itemsFromServer);
     setItems(itemsFromServer);
-    setItems2(res2.data);
   };
 
   // ADD ITEM
@@ -61,15 +57,8 @@ const App = () => {
   return (
     <div className="app">
       <div className="shoppingList">
-        {/* <div className="listContent"> */}
         <Header onAdd={addItem} />
-        <Items
-          items={items}
-          items2={items2}
-          onDelete={deleteItem}
-          onUpdate={updateItem}
-        />
-        {/* </div> */}
+        <Items items={items} onDelete={deleteItem} onUpdate={updateItem} />
       </div>
       <Footer />
     </div>
