@@ -7,7 +7,7 @@ const AddItem = ({ onAdd }) => {
   const [formVisibility, setFormVisibility] = useState(true);
 
   return (
-    <>
+    <div className="formArea">
       <button
         className="btn btnAdd"
         style={{
@@ -17,12 +17,11 @@ const AddItem = ({ onAdd }) => {
           setFormVisibility(!formVisibility);
         }}
       >
-        {/* // GRID THE FORM OR SM */}
-        {formVisibility ? "Add" : "Close"}
+        {formVisibility ? "Add" : "X"}
       </button>
       <form
-        style={{ display: formVisibility ? "none" : "flex" }}
-        className="form-add-item"
+        style={{ display: formVisibility && "none" }}
+        className="formAddItem"
         onSubmit={(e) => {
           e.preventDefault();
           if (name === "") {
@@ -39,40 +38,47 @@ const AddItem = ({ onAdd }) => {
           onAdd({ name, important, quantity });
         }}
       >
-        <label>Name</label>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-        />
-        <label>Quantity</label>
-        <input
-          type="number"
-          value={quantity}
-          min={1}
-          step={1}
-          onChange={(e) => {
-            if (isNaN(parseInt(e.target.value))) setQuantity("");
-            else {
-              const quantityInput = Math.floor(e.target.value);
-              setQuantity(quantityInput);
-            }
-          }}
-        />
-        <label>Important?</label>
-        <input
-          type="checkbox"
-          checked={important}
-          value={important}
-          onChange={(e) => {
-            setImportant(e.currentTarget.checked);
-          }}
-        />
+        <div className="formInputName">
+          <label>Name</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
+        </div>
+        <div className="formInputQuantity">
+          <label>Quantity</label>
+          <input
+            type="number"
+            value={quantity}
+            min={1}
+            step={1}
+            onChange={(e) => {
+              if (isNaN(parseInt(e.target.value))) setQuantity("");
+              else {
+                const quantityInput = Math.floor(e.target.value);
+                setQuantity(quantityInput);
+              }
+            }}
+          />
+        </div>
+        <div className="formInputImportant">
+          <label>Important</label>
+          <input
+            type="checkbox"
+            checked={important}
+            value={important}
+            onChange={(e) => {
+              setImportant(e.currentTarget.checked);
+            }}
+          />
+        </div>
+
         <input type="submit" className="btn" />
       </form>
-    </>
+    </div>
   );
 };
 
