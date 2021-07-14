@@ -76,7 +76,7 @@ const AddItem = ({ onAdd }) => {
           />
         </div>
 
-        <input type="submit" className="btn" />
+        <input type="submit" className="btn btnSubmit" />
       </form>
     </div>
   );
