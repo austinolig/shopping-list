@@ -26,7 +26,7 @@ const App = () => {
   const updateItem = async (id, item) => {
     const res = await axios.put(`http://localhost:5000/items/${id}`, {
       id: item.id,
-      name: `${item.name} (Edited)`,
+      name: item.name,
       important: item.important,
       quantity: item.quantity,
     });

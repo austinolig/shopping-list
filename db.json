@@ -2,15 +2,15 @@
   "items": [
     {
       "id": 6,
-      "name": "Bread (Edited)",
+      "name": "Bread",
       "important": true,
       "quantity": 2
     },
     {
-      "name": "Eggs",
+      "id": 7,
+      "name": "Eggos",
       "important": false,
-      "quantity": 1,
-      "id": 7
+      "quantity": 1
     },
     {
       "name": "Chocolate Milk",
