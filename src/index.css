@@ -85,11 +85,28 @@ footer {
 }
 
 .itemsTable td > input[type="text"] {
-  width: 100%;
+  width: 80%;
+  text-align: center;
 }
 
 .itemsTable td > input[type="number"] {
+  width: 40%;
+  text-align: center;
+}
+
+.thActions,
+.thImportant,
+.thQuantity {
   width: 20%;
+}
+
+.thName {
+  width: 40%;
+}
+
+.tdActions {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .formArea {
