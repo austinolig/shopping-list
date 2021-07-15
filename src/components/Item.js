@@ -1,4 +1,4 @@
-import { FaTrash, FaEdit, FaCheck } from "react-icons/fa";
+import { FaTrash, FaEdit, FaCheck, FaStar, FaRegStar } from "react-icons/fa";
 import { useState } from "react";
 
 const Item = ({ item, onDelete, onUpdate }) => {
@@ -9,7 +9,6 @@ const Item = ({ item, onDelete, onUpdate }) => {
     quantity: item.quantity,
     important: item.important,
   });
-  // console.log(currentItem);
 
   const updateItem = (e) => {
     const { name, value } = e.target;
@@ -19,11 +18,29 @@ const Item = ({ item, onDelete, onUpdate }) => {
     }));
   };
 
+  const toggleImportant = () => {
+    setCurrentItem({
+      ...currentItem,
+      important: !currentItem.important,
+    });
+
+    onUpdate(item.id, { ...currentItem, important: !currentItem.important });
+  };
+
   return (
     <tr
       className="item"
       style={{ fontWeight: currentItem.important && "bold" }}
     >
+      <td>
+        <>
+          {currentItem.important ? (
+            <FaStar onClick={toggleImportant} />
+          ) : (
+            <FaRegStar onClick={toggleImportant} />
+          )}
+        </>
+      </td>
       <td>
         {isEditing ? (
           <input
@@ -48,17 +65,22 @@ const Item = ({ item, onDelete, onUpdate }) => {
           currentItem.name
         )}
       </td>
-      <td>
+      <td className="tdActions">
         {!isEditing ? (
-          <FaEdit
-            onClick={() => {
-              setIsEditing(!isEditing);
-
-              // onUpdate(item.id, item);
-              //ON CLICK CHANGE TO SAVE ICON OR SUM
-            }}
-            style={{ color: "blue" }}
-          />
+          <>
+            <FaEdit
+              onClick={() => {
+                setIsEditing(!isEditing);
+              }}
+              style={{ color: "blue" }}
+            />
+            <FaTrash
+              onClick={() => {
+                onDelete(item.id);
+              }}
+              style={{ color: "red" }}
+            />
+          </>
         ) : (
           <FaCheck
             onClick={() => {
@@ -73,12 +95,6 @@ const Item = ({ item, onDelete, onUpdate }) => {
             style={{ color: "green" }}
           />
         )}
-        <FaTrash
-          onClick={() => {
-            onDelete(item.id);
-          }}
-          style={{ color: "red" }}
-        />
       </td>
     </tr>
   );
