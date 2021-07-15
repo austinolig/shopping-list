@@ -14,7 +14,7 @@ const Items = ({ items, onDelete, onUpdate }) => {
         </thead>
         <tbody>
           {items
-            .filter((item) => item.important === true && console.log(item))
+            .filter((item) => item.important === true)
             .map((item) => {
               return (
                 <Item
