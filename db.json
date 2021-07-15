@@ -3,26 +3,26 @@
     {
       "id": 6,
       "name": "Whole bread",
-      "important": true,
-      "quantity": 2
+      "important": false,
+      "quantity": "1"
     },
     {
       "id": 7,
       "name": "Eggos",
-      "important": false,
+      "important": true,
+      "quantity": "2"
+    },
+    {
+      "id": 8,
+      "name": "Chocolate Milk",
+      "important": true,
       "quantity": 1
     },
     {
-      "name": "Chocolate Milk",
-      "important": false,
-      "quantity": 1,
-      "id": 8
-    },
-    {
+      "id": 9,
       "name": "Cereal",
-      "important": true,
-      "quantity": 1,
-      "id": 9
+      "important": false,
+      "quantity": 1
     }
   ]
 }
