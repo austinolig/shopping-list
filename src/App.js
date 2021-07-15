@@ -6,13 +6,7 @@ import { useEffect, useState } from "react";
 
 // TO-DO //
 // ADD ROUTER FOR ABOUT PAGE
-// TOGGLE IMPORTANT
-// SORT BY DATE ADDED, IMPORTANCE, ALPHABETICAL (ASC/DSC), SORT BY STORE (IF MULTISTOP)
-// ex. by: date added, importance+date added, importance+alpha,
-// ADD PRICE FIELD AND NOTES?
 // ENTER PRICE AMOUNT TO BE TOTALLED AT THE END (OPTIONAL FIELD)
-// CUSTOM ITEMS OR SELECT ITEM FROM INVENTORY LIST (FAKE GROCERY)
-// MAKING MULTIPLE STOPS? SHOW OPTION TO ADD A STORE NAME
 
 const App = () => {
   const [items, setItems] = useState([]);
