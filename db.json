@@ -1,18 +1,6 @@
 {
   "items": [
     {
-      "id": 6,
-      "name": "Whole bread",
-      "important": false,
-      "quantity": "1"
-    },
-    {
-      "id": 7,
-      "name": "Eggos",
-      "important": true,
-      "quantity": "2"
-    },
-    {
       "id": 8,
       "name": "Chocolate Milk",
       "important": true,
@@ -21,8 +9,20 @@
     {
       "id": 9,
       "name": "Cereal",
-      "important": true,
+      "important": false,
       "quantity": 1
+    },
+    {
+      "id": 15,
+      "name": "Eggs",
+      "important": false,
+      "quantity": 1
+    },
+    {
+      "name": "Bread",
+      "important": true,
+      "quantity": 2,
+      "id": 16
     }
   ]
 }
