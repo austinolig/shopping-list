@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaPlus, FaTimes } from "react-icons/fa";
 
 const AddItem = ({ onAdd }) => {
   const [name, setName] = useState("");
@@ -17,7 +18,7 @@ const AddItem = ({ onAdd }) => {
           setFormVisibility(!formVisibility);
         }}
       >
-        {formVisibility ? "Add" : "X"}
+        {formVisibility ? <FaPlus /> : <FaTimes />}
       </button>
       <form
         style={{ display: formVisibility && "none" }}
