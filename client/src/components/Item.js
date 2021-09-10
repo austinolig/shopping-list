@@ -4,7 +4,7 @@ import { useState } from "react";
 const Item = ({ item, onDelete, onUpdate }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [currentItem, setCurrentItem] = useState({
-    id: item.id,
+    id: item._id,
     name: item.name,
     quantity: item.quantity,
     important: item.important,
@@ -19,12 +19,15 @@ const Item = ({ item, onDelete, onUpdate }) => {
   };
 
   const toggleImportant = () => {
-    setCurrentItem({
+    setCurrentItem((currentItem) => ({
+      ...currentItem,
+      important: !currentItem.important,
+    }));
+
+    onUpdate(currentItem.id, {
       ...currentItem,
       important: !currentItem.important,
     });
-
-    onUpdate(item.id, { ...currentItem, important: !currentItem.important });
   };
 
   return (
@@ -33,13 +36,11 @@ const Item = ({ item, onDelete, onUpdate }) => {
       style={{ fontWeight: currentItem.important && "bold" }}
     >
       <td>
-        <>
-          {currentItem.important ? (
-            <FaStar onClick={toggleImportant} />
-          ) : (
-            <FaRegStar onClick={toggleImportant} />
-          )}
-        </>
+        {currentItem.important ? (
+          <FaStar onClick={toggleImportant} />
+        ) : (
+          <FaRegStar onClick={toggleImportant} />
+        )}
       </td>
       <td>
         {isEditing ? (
@@ -76,7 +77,7 @@ const Item = ({ item, onDelete, onUpdate }) => {
             />
             <FaTrash
               onClick={() => {
-                onDelete(item.id);
+                onDelete(currentItem.id);
               }}
               style={{ color: "red" }}
             />
@@ -89,7 +90,7 @@ const Item = ({ item, onDelete, onUpdate }) => {
                 item.quantity !== currentItem.quantity ||
                 item.name !== currentItem.name
               ) {
-                onUpdate(item.id, currentItem);
+                onUpdate(currentItem.id, currentItem);
               }
             }}
             style={{ color: "green" }}

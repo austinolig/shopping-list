@@ -13,7 +13,7 @@ const App = () => {
 
   const testFunction = async (id) => {
     id = 123;
-    var someData = "some data";
+    //var someData = "some data";
     const res = await axios.get(
       `https://2wtmhi8utf.execute-api.us-east-1.amazonaws.com/default/testResource?pet=${id}`
     );
@@ -63,39 +63,39 @@ const App = () => {
   const getItems = async () => {
     const res = await axios.get("http://localhost:5000/items");
     const itemsFromServer = res.data;
-    console.log(itemsFromServer);
-    setItems(itemsFromServer);
+    setItems(() => itemsFromServer);
   };
 
   // ADD ITEM
   const addItem = async (item) => {
-    const res = await axios.post("http://localhost:5000/items", item);
+    const res = await axios.post("http://localhost:5000/items/post", item);
     console.log("Add!", res);
-    setItems([...items, res.data]);
+    setItems((items) => [...items, res.data]);
   };
 
   // UPDATE ITEM
   const updateItem = async (id, item) => {
-    const res = await axios.put(`http://localhost:5000/items/${id}`, {
-      id: item.id,
+    const res = await axios.patch(`http://localhost:5000/items/update/${id}`, {
       name: item.name,
       important: item.important,
       quantity: item.quantity,
     });
     const updatedItem = res.data;
     console.log("Update!", res);
-    setItems(items.map((item) => (item.id === id ? updatedItem : item)));
+    setItems((items) =>
+      items.map((item) => (item._id === id ? updatedItem : item))
+    );
   };
 
   // DELETE ITEM
   const deleteItem = async (id) => {
-    const res = await axios.delete(`http://localhost:5000/items/${id}`);
-    setItems(items.filter((item) => item.id !== id));
+    const res = await axios.delete(`http://localhost:5000/items/delete/${id}`);
     console.log("Delete!", res);
+    setItems(() => items.filter((item) => item._id !== id));
   };
 
   useEffect(() => {
-    //getItems();
+    getItems();
   }, []);
 
   return (

@@ -1,28 +1,36 @@
-// const { MongoClient } = require("mongodb");
-
-// const client = new MongoClient(uri, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
-
-// client.connect((err) => {
-//   const collection = client.db("shopping-list").collection("items");
-//   // perform actions on the collection object
-//   console.log(collection);
-//   client.close();
-// });
-
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
+const cors = require("cors");
+const itemRoutes = require("./routes/Items");
 
+// connection URI
+const CONNECTION_URI =
+  "mongodb+srv://dbAdmin:A1qnbHz0YqCps4sC@cluster0.ckssa.mongodb.net/shopping-list?retryWrites=true&w=majority";
+// PORT number
+const PORT = process.env.PORT || 5000;
+
+// db connection
+mongoose.connect(CONNECTION_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+const db = mongoose.connection;
+db.once("open", () => {
+  console.log("Connected to MongoDB...");
+});
+
+// create express
 const app = express();
 
+// middleware
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
-const db = require("./config/keys").mongoURI;
+// routes
+app.get("/", (req, res) => res.send("hi from index.js"));
+app.use("/items", itemRoutes);
 
-mongoose
-  .connect(db)
-  .then(() => console.log("connected to mongoDB..."))
-  .catch((err) => console.log(err));
+// server listening
+app.listen(PORT, () => console.log(`listening on port ${PORT}...`));

@@ -13,30 +13,16 @@ const Items = ({ items, onDelete, onUpdate }) => {
           </tr>
         </thead>
         <tbody>
-          {items
-            .filter((item) => item.important === true)
-            .map((item) => {
-              return (
-                <Item
-                  key={item.id}
-                  item={item}
-                  onDelete={onDelete}
-                  onUpdate={onUpdate}
-                />
-              );
-            })}
-          {items
-            .filter((item) => item.important === false)
-            .map((item) => {
-              return (
-                <Item
-                  key={item.id}
-                  item={item}
-                  onDelete={onDelete}
-                  onUpdate={onUpdate}
-                />
-              );
-            })}
+          {items.map((item) => {
+            return (
+              <Item
+                key={item._id}
+                item={item}
+                onDelete={onDelete}
+                onUpdate={onUpdate}
+              />
+            );
+          })}
         </tbody>
       </table>
     </div>
