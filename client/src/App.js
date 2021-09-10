@@ -4,60 +4,8 @@ import Items from "./components/Items.js";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-// TO-DO //
-// ADD ROUTER FOR ABOUT PAGE
-// ENTER PRICE AMOUNT TO BE TOTALLED AT THE END (OPTIONAL FIELD)
-
 const App = () => {
   const [items, setItems] = useState([]);
-
-  const testFunction = async (id) => {
-    id = 123;
-    //var someData = "some data";
-    const res = await axios.get(
-      `https://2wtmhi8utf.execute-api.us-east-1.amazonaws.com/default/testResource?pet=${id}`
-    );
-    console.log(res.data.body);
-  };
-
-  // const lambdaGetItems = async () => {
-  //   console.log("lambda GET (get)");
-  //   const res = await axios.get(
-  //     `https://2wtmhi8utf.execute-api.us-east-1.amazonaws.com/default/testResource`
-  //   );
-  //   console.log(res.data.body);
-  // };
-
-  // const lambdaAddItem = async (item) => {
-  //   console.log("lambda POST (add)");
-  //   const res = await axios.post(
-  //     `https://2wtmhi8utf.execute-api.us-east-1.amazonaws.com/default/testResource`,
-  //     item
-  //   );
-  //   console.log(res.data.body);
-  // };
-
-  // const lambdaUpdateItem = async (id, item) => {
-  //   console.log("lambda PUT (update)");
-  //   const res = await axios.put(
-  //     `https://2wtmhi8utf.execute-api.us-east-1.amazonaws.com/default/testResource?id=${id}`,
-  //     {
-  //       id: item.id,
-  //       name: item.name,
-  //       important: item.important,
-  //       quantity: item.quantity,
-  //     }
-  //   );
-  //   console.log(res.data.body);
-  // };
-
-  // const lambdaDeleteItem = async (id) => {
-  //   console.log("lambda DEL (delete)");
-  //   const res = await axios.delete(
-  //     `https://2wtmhi8utf.execute-api.us-east-1.amazonaws.com/default/testResource?id=${id}`
-  //   );
-  //   console.log(res.data.body);
-  // };
 
   // GET ITEMS
   const getItems = async () => {
@@ -104,7 +52,7 @@ const App = () => {
         <Header onAdd={addItem} />
         <Items items={items} onDelete={deleteItem} onUpdate={updateItem} />
       </div>
-      <Footer onPress={testFunction} />
+      <Footer />
     </div>
   );
 };
