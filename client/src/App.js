@@ -3,7 +3,6 @@ import Footer from "./components/Footer.js";
 import Items from "./components/Items.js";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import 
 
 // TO-DO //
 // ADD ROUTER FOR ABOUT PAGE
@@ -96,7 +95,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    getItems();
+    //getItems();
   }, []);
 
   return (
