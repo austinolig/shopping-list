@@ -9,7 +9,9 @@ const App = () => {
 
   // GET ITEMS
   const getItems = async () => {
-    const res = await axios.get("http://localhost:5000/items");
+    const res = await axios.get(
+      "https://8lj39heoti.execute-api.us-east-1.amazonaws.com/default/items"
+    );
     const itemsFromServer = res.data;
     setItems(() => itemsFromServer);
   };
