@@ -18,18 +18,25 @@ const App = () => {
 
   // ADD ITEM
   const addItem = async (item) => {
-    const res = await axios.post("http://localhost:5000/items/post", item);
+    const res = await axios.post(
+      "https://8lj39heoti.execute-api.us-east-1.amazonaws.com/default/items",
+      item
+    );
     console.log("Add!", res);
     setItems((items) => [...items, res.data]);
   };
 
   // UPDATE ITEM
   const updateItem = async (id, item) => {
-    const res = await axios.patch(`http://localhost:5000/items/update/${id}`, {
-      name: item.name,
-      important: item.important,
-      quantity: item.quantity,
-    });
+    const res = await axios.patch(
+      "https://8lj39heoti.execute-api.us-east-1.amazonaws.com/default/items",
+      {
+        id: id,
+        name: item.name,
+        important: item.important,
+        quantity: item.quantity,
+      }
+    );
     const updatedItem = res.data;
     console.log("Update!", res);
     setItems((items) =>
@@ -39,7 +46,12 @@ const App = () => {
 
   // DELETE ITEM
   const deleteItem = async (id) => {
-    const res = await axios.delete(`http://localhost:5000/items/delete/${id}`);
+    const res = await axios.delete(
+      "https://8lj39heoti.execute-api.us-east-1.amazonaws.com/default/items",
+      {
+        id: id,
+      }
+    );
     console.log("Delete!", res);
     setItems(() => items.filter((item) => item._id !== id));
   };
