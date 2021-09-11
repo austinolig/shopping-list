@@ -8,7 +8,7 @@ const Items = ({ items, onDelete, onUpdate }) => {
           <tr>
             <th className="thImportant">Important</th>
             <th className="thQuantity">Quantity</th>
-            <th className="thName">Name</th>
+            <th className="thName">Item</th>
             <th className="thActions">Actions</th>
           </tr>
         </thead>
