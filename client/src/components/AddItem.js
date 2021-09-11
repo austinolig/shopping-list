@@ -15,7 +15,7 @@ const AddItem = ({ onAdd }) => {
           backgroundColor: !formVisibility && "red",
         }}
         onClick={() => {
-          setFormVisibility(!formVisibility);
+          setFormVisibility((visibility) => !visibility);
         }}
       >
         {formVisibility ? <FaPlus /> : <FaTimes />}
@@ -37,6 +37,7 @@ const AddItem = ({ onAdd }) => {
           setImportant(false);
           setQuantity(1);
           onAdd({ name, important, quantity });
+          setFormVisibility((visibility) => !visibility);
         }}
       >
         <div className="formInputName">

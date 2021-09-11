@@ -12,7 +12,7 @@ const App = () => {
     const res = await axios.get(
       "https://8lj39heoti.execute-api.us-east-1.amazonaws.com/default/items"
     );
-    const itemsFromServer = res.data;
+    const itemsFromServer = res.data.body;
     setItems(() => itemsFromServer);
   };
 
@@ -22,8 +22,9 @@ const App = () => {
       "https://8lj39heoti.execute-api.us-east-1.amazonaws.com/default/items",
       item
     );
-    console.log("Add!", res);
-    setItems((items) => [...items, res.data]);
+    const newItem = res.data.body;
+    console.log("Add!", newItem);
+    setItems((items) => [...items, newItem]);
   };
 
   // UPDATE ITEM
@@ -37,8 +38,8 @@ const App = () => {
         quantity: item.quantity,
       }
     );
-    const updatedItem = res.data;
-    console.log("Update!", res);
+    const updatedItem = res.data.body.value;
+    console.log("Update!", updatedItem);
     setItems((items) =>
       items.map((item) => (item._id === id ? updatedItem : item))
     );
@@ -46,14 +47,16 @@ const App = () => {
 
   // DELETE ITEM
   const deleteItem = async (id) => {
+    setItems((items) => items.filter((item) => item._id !== id));
     const res = await axios.delete(
       "https://8lj39heoti.execute-api.us-east-1.amazonaws.com/default/items",
       {
-        id: id,
+        data: {
+          id,
+        },
       }
     );
     console.log("Delete!", res);
-    setItems(() => items.filter((item) => item._id !== id));
   };
 
   useEffect(() => {
