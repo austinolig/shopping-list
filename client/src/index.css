@@ -237,3 +237,16 @@ input:not(input[type="checkbox"]):focus {
     border: 0;
   }
 }
+
+@media screen and (max-width: 470px) {
+  .itemsTable th {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+
+  .itemsTable td {
+    font-size: 1rem;
+    padding: 0.5rem;
+    text-transform: capitalize;
+  }
+}
